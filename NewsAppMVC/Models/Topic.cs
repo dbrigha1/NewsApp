@@ -14,6 +14,7 @@ namespace NewsAppMVC.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateCreated { get; set; }
+        public virtual ICollection<Article> Article { get; set; }
         
     }
 }

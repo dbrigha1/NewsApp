@@ -50,33 +50,26 @@ namespace NewsAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,DateCreated,DateUpdated,Topics")] ArticleViewModel articleVM)
+        public ActionResult Create([Bind(Include = "ID,Name,DateCreated,DateUpdated,SelectedTopicIds")] ArticleViewModel articleVM)
         {
             
-            Article article = new Article()
-            {
-                ID = articleVM.ID,
-                Name = articleVM.Name,
-                DateCreated = articleVM.DateCreated,
-                DateUpdated = articleVM.DateUpdated,
-                Topics = db.Topics.Where(c => c.ID.Equals(articleVM.SelectedTopics.SingleOrDefault())).ToList()
-            };
-
             if (ModelState.IsValid)
             {
-                //ICollection<Topic> topic;
-                //foreach (var item in articleVM.AllTopics)
-                //{
-
-                //}
-                           
+                Article article = new Article()
+                {
+                    ID = articleVM.ID,
+                    Name = articleVM.Name,
+                    DateCreated = articleVM.DateCreated,
+                    DateUpdated = articleVM.DateUpdated,
+                    Topics = db.Topics.Where(c => articleVM.SelectedTopicIds.Contains(c.ID)).ToList()
+                };
 
                 db.Articles.Add(article);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(article);
+            return View(articleVM);
         }
 
         // GET: Articles/Edit/5

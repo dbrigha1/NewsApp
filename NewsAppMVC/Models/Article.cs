@@ -8,6 +8,10 @@ namespace NewsAppMVC.Models
 {
     public class Article
     {
+        public Article()
+        {
+            this.Topics = new HashSet<Topic>();
+        }
         public int ID { get; set; }
         public string Name { get; set; }
         [Display(Name = "Date Created")]
@@ -18,7 +22,8 @@ namespace NewsAppMVC.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateUpdated { get; set; }
-        public ICollection<Topic> Topics {get; set;}
+        
+        public virtual ICollection<Topic> Topics {get; set;}
         public Author Author { get; set; }
     }
 }

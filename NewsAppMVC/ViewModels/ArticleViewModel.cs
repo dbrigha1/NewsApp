@@ -11,7 +11,19 @@ namespace NewsAppMVC.ViewModels
     [NotMapped]
     public class ArticleViewModel : Article
     {
-        public ICollection<SelectListItem> AllTopics { get; set; }
-        public IEnumerable<int> SelectedTopics { get; set; }
+        public IEnumerable<SelectListItem> AllTopics { get; set; }
+        private IList<int> selectedTopicIds;
+        public IList<int> SelectedTopicIds
+        {
+            get
+            {
+                if (selectedTopicIds == null)
+                {
+                    selectedTopicIds = this.Topics.Select(c => c.ID).ToList();
+                }
+                return selectedTopicIds;
+            }
+            set { selectedTopicIds = value; }
+        }
     }
 }

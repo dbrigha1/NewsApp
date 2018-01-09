@@ -34,7 +34,10 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Topics)
+            @foreach (var TopicName in item.Topics.Select(c => c.Name).ToList())
+            {
+                <span>@TopicName, </span>
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DateCreated)

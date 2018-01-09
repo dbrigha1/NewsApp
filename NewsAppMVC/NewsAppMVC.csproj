@@ -230,6 +230,22 @@
     <Compile Include="Migrations\201801080531062_updated models.Designer.cs">
       <DependentUpon>201801080531062_updated models.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801090051508_changed articleviewmodel.cs" />
+    <Compile Include="Migrations\201801090051508_changed articleviewmodel.Designer.cs">
+      <DependentUpon>201801090051508_changed articleviewmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090103181_copied old project code.cs" />
+    <Compile Include="Migrations\201801090103181_copied old project code.Designer.cs">
+      <DependentUpon>201801090103181_copied old project code.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090154548_v2.cs" />
+    <Compile Include="Migrations\201801090154548_v2.Designer.cs">
+      <DependentUpon>201801090154548_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801090202430_update properties.cs" />
+    <Compile Include="Migrations\201801090202430_update properties.Designer.cs">
+      <DependentUpon>201801090202430_update properties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -355,6 +371,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801080531062_updated models.resx">
       <DependentUpon>201801080531062_updated models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090051508_changed articleviewmodel.resx">
+      <DependentUpon>201801090051508_changed articleviewmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090103181_copied old project code.resx">
+      <DependentUpon>201801090103181_copied old project code.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090154548_v2.resx">
+      <DependentUpon>201801090154548_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801090202430_update properties.resx">
+      <DependentUpon>201801090202430_update properties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

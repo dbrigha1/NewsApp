@@ -38,7 +38,10 @@ namespace NewsAppMVC.Controllers
         // GET: Topics/Create
         public ActionResult Create()
         {
-            return View();
+            ViewModels.TopicViewModel TopicVM = new ViewModels.TopicViewModel();
+            TopicVM.AllArticles = db.Articles.Select(c => new SelectListItem { Text = c.Name, Value = c.ID.ToString() }).ToList();
+            
+            return View(TopicVM);
         }
 
         // POST: Topics/Create
@@ -46,16 +49,24 @@ namespace NewsAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,DateCreated")] Topic topic)
+        public ActionResult Create([Bind(Include = "ID,Name,SelectedArticleIds,DateCreated")] NewsAppMVC.ViewModels.TopicViewModel topicVM)
         {
             if (ModelState.IsValid)
             {
+                Topic topic = new Topic()
+                {
+                    ID = topicVM.ID,
+                    Name = topicVM.Name,
+                    DateCreated = topicVM.DateCreated,
+                    Articles = db.Articles.Where(c => topicVM.SelectedArticleIds.Contains(c.ID)).ToList()
+                };
+
                 db.Topics.Add(topic);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(topic);
+            return View(topicVM);
         }
 
         // GET: Topics/Edit/5

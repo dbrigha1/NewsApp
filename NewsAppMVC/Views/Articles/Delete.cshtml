@@ -21,6 +21,14 @@
         </dd>
         
         <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.Author.FirstName) @Html.DisplayFor(modelItem => modelItem.Author.LastName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Topics)
         </dt>
         @foreach (var item in Model.Topics.Select(c => c.Name).ToList())

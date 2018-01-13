@@ -250,6 +250,30 @@
     <Compile Include="Migrations\201801110326562_create Articles in Topic class.Designer.cs">
       <DependentUpon>201801110326562_create Articles in Topic class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801120153171_create topic view model.cs" />
+    <Compile Include="Migrations\201801120153171_create topic view model.Designer.cs">
+      <DependentUpon>201801120153171_create topic view model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801120201378_add accessors to topics viewmodel.cs" />
+    <Compile Include="Migrations\201801120201378_add accessors to topics viewmodel.Designer.cs">
+      <DependentUpon>201801120201378_add accessors to topics viewmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801130521056_added fields in author and article class.cs" />
+    <Compile Include="Migrations\201801130521056_added fields in author and article class.Designer.cs">
+      <DependentUpon>201801130521056_added fields in author and article class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801130527017_add allauthors property in article viewmodel.cs" />
+    <Compile Include="Migrations\201801130527017_add allauthors property in article viewmodel.Designer.cs">
+      <DependentUpon>201801130527017_add allauthors property in article viewmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801130535389_add selected authorId in aritcle viewmodel class.cs" />
+    <Compile Include="Migrations\201801130535389_add selected authorId in aritcle viewmodel class.Designer.cs">
+      <DependentUpon>201801130535389_add selected authorId in aritcle viewmodel class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801130559431_included selectedAuthorId get and set.cs" />
+    <Compile Include="Migrations\201801130559431_included selectedAuthorId get and set.Designer.cs">
+      <DependentUpon>201801130559431_included selectedAuthorId get and set.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -261,6 +285,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
+    <Compile Include="ViewModels\TopicViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -390,6 +415,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801110326562_create Articles in Topic class.resx">
       <DependentUpon>201801110326562_create Articles in Topic class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801120153171_create topic view model.resx">
+      <DependentUpon>201801120153171_create topic view model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801120201378_add accessors to topics viewmodel.resx">
+      <DependentUpon>201801120201378_add accessors to topics viewmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801130521056_added fields in author and article class.resx">
+      <DependentUpon>201801130521056_added fields in author and article class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801130527017_add allauthors property in article viewmodel.resx">
+      <DependentUpon>201801130527017_add allauthors property in article viewmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801130535389_add selected authorId in aritcle viewmodel class.resx">
+      <DependentUpon>201801130535389_add selected authorId in aritcle viewmodel class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801130559431_included selectedAuthorId get and set.resx">
+      <DependentUpon>201801130559431_included selectedAuthorId get and set.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -21,6 +21,19 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Articles)
+        </dt>
+        <dd>
+            @foreach (var item in Model.Articles.Select(c => c.Name).ToList())
+            {
+            <span>
+                @item,
+            </span>
+            }
+        </dd>
+       
+        
+        <dt>
             @Html.DisplayNameFor(model => model.DateCreated)
         </dt>
 

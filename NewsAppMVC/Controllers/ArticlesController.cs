@@ -41,7 +41,8 @@ namespace NewsAppMVC.Controllers
         {
             ViewModels.ArticleViewModel vm = new ViewModels.ArticleViewModel();
             vm.AllTopics = db.Topics.Select(c => new SelectListItem { Text = c.Name, Value = c.ID.ToString()}).ToList();
-
+            vm.AllAuthors = db.Authors.Select(c => new SelectListItem { Text = c.FirstName + " " + c.MiddleName + " " + c.LastName, Value = c.ID.ToString() }).ToList();
+            
             return View(vm);
         }
 
@@ -50,7 +51,7 @@ namespace NewsAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,DateCreated,DateUpdated,SelectedTopicIds")] ArticleViewModel articleVM)
+        public ActionResult Create([Bind(Include = "ID,Name,DateCreated,DateUpdated,SelectedTopicIds,SelectedAuthorId")] ArticleViewModel articleVM)
         {
             
             if (ModelState.IsValid)
@@ -61,7 +62,8 @@ namespace NewsAppMVC.Controllers
                     Name = articleVM.Name,
                     DateCreated = articleVM.DateCreated,
                     DateUpdated = articleVM.DateUpdated,
-                    Topics = db.Topics.Where(c => articleVM.SelectedTopicIds.Contains(c.ID)).ToList()
+                    Topics = db.Topics.Where(c => articleVM.SelectedTopicIds.Contains(c.ID)).ToList(),
+                    Author = db.Authors.Where(c => articleVM.SelectedAuthorId.Equals(c.ID)).SingleOrDefault()
                 };
 
                 db.Articles.Add(article);

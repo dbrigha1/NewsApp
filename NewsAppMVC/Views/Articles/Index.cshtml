@@ -16,6 +16,9 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Topics)
         </th>
         <th>
@@ -32,6 +35,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author.FirstName) @Html.DisplayFor(modelItem => item.Author.LastName)
         </td>
         <td>
             @foreach (var TopicName in item.Topics.Select(c => c.Name).ToList())

@@ -1,4 +1,4 @@
-﻿@model NewsAppMVC.Models.Topic
+﻿@model NewsAppMVC.ViewModels.TopicViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -21,6 +21,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SelectedArticleIds, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.SelectedArticleIds, Model.AllArticles, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SelectedArticleIds, "", new { @class = "text-danger" })
             </div>
         </div>
 

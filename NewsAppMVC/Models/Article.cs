@@ -24,6 +24,6 @@ namespace NewsAppMVC.Models
         public DateTime DateUpdated { get; set; }
         
         public virtual ICollection<Topic> Topics {get; set;}
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
     }
 }

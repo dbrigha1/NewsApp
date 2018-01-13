@@ -12,6 +12,8 @@ namespace NewsAppMVC.ViewModels
     public class ArticleViewModel : Article
     {
         public IEnumerable<SelectListItem> AllTopics { get; set; }
+        public IEnumerable<SelectListItem> AllAuthors { get; set; }
+        public int SelectedAuthorId { get; set; }
         private IList<int> selectedTopicIds;
         public IList<int> SelectedTopicIds
         {

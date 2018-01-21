@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NewsAppMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,10 @@ namespace NewsAppMVC.Controllers
 {
     public class HomeController : Controller
     {
+        private NewsAppMVCContext db = new NewsAppMVCContext();
         public ActionResult Index()
         {
-            return View();
+            return View(db.Articles.ToList());
         }
 
         public ActionResult About()

@@ -62,6 +62,7 @@ namespace NewsAppMVC.Controllers
                     Name = articleVM.Name,
                     DateCreated = articleVM.DateCreated,
                     DateUpdated = articleVM.DateUpdated,
+                   
                     Topics = db.Topics.Where(c => articleVM.SelectedTopicIds.Contains(c.ID)).ToList(),
                     Author = db.Authors.Where(c => articleVM.SelectedAuthorId.Equals(c.ID)).SingleOrDefault()
                 };
@@ -86,7 +87,19 @@ namespace NewsAppMVC.Controllers
             {
                 return HttpNotFound();
             }
-            return View(article);
+            NewsAppMVC.ViewModels.ArticleViewModel articleVM = new ArticleViewModel()
+            {
+                ID = article.ID,
+                Name = article.Name,
+                DateCreated = article.DateCreated,
+                DateUpdated = article.DateUpdated,
+                
+                Topics = article.Topics,
+                Author = article.Author
+            };
+            articleVM.AllTopics = db.Topics.Select(c => new SelectListItem { Text = c.Name, Value = c.ID.ToString() }).ToList();
+            articleVM.AllAuthors = db.Authors.Select(c => new SelectListItem { Text = c.FirstName + " " + c.MiddleName + " " + c.LastName, Value = c.ID.ToString() }).ToList();
+            return View(articleVM);
         }
 
         // POST: Articles/Edit/5
@@ -94,15 +107,46 @@ namespace NewsAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,DateCreated,DateUpdated")] Article article)
+        public ActionResult Edit([Bind(Include = "ID,Name,SelectedTopicIds,SelectedAuthorId,DateCreated,DateUpdated")] ViewModels.ArticleViewModel articleVM)
         {
+          
+
+           
             if (ModelState.IsValid)
             {
-                db.Entry(article).State = EntityState.Modified;
+                Article existingArticle = db.Articles.Find(articleVM.ID);
+
+                existingArticle.ID = articleVM.ID;
+                existingArticle.Name = articleVM.Name;
+                
+                existingArticle.DateCreated = articleVM.DateCreated;
+                existingArticle.DateUpdated = articleVM.DateUpdated;
+                //existingArticle.Topics = db.Topics.Where(c => articleVM.SelectedTopicIds.Contains(c.ID)).ToList();
+                existingArticle.Author = db.Authors.Where(c => articleVM.SelectedAuthorId.Equals(c.ID)).SingleOrDefault();
+
+                var existingTopicIds = existingArticle.Topics.Select(c => c.ID);
+
+                var deletedTopicIds = existingTopicIds.Except(articleVM.SelectedTopicIds).ToList();
+
+                var addedTopicIds = articleVM.SelectedTopicIds.Except(existingTopicIds);
+
+                foreach (var item in deletedTopicIds)
+                {
+                    var deletedItem = db.Topics.Where(c => c.ID == item).SingleOrDefault();
+                    existingArticle.Topics.Remove(deletedItem);
+                }
+                foreach (var item in addedTopicIds)
+                {
+                    var addedItem = db.Topics.Where(c => c.ID == item).SingleOrDefault();
+                    existingArticle.Topics.Add(addedItem);
+                }
+
+
+                db.Entry(existingArticle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(article);
+            return View(articleVM);
         }
 
         // GET: Articles/Delete/5

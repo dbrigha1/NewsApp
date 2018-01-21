@@ -274,6 +274,10 @@
     <Compile Include="Migrations\201801130559431_included selectedAuthorId get and set.Designer.cs">
       <DependentUpon>201801130559431_included selectedAuthorId get and set.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801210233325_add author id.cs" />
+    <Compile Include="Migrations\201801210233325_add author id.Designer.cs">
+      <DependentUpon>201801210233325_add author id.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -433,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801130559431_included selectedAuthorId get and set.resx">
       <DependentUpon>201801130559431_included selectedAuthorId get and set.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801210233325_add author id.resx">
+      <DependentUpon>201801210233325_add author id.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

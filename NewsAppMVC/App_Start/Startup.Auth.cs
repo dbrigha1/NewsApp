@@ -58,11 +58,11 @@ namespace NewsAppMVC
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "824119768594-fakbafdr00b2tlan2mk9ckcuf56etb0j.apps.googleusercontent.com",
+                ClientSecret = "wZuUC2RyDb-DummLVeOFnGRH"
+            });
         }
     }
 }

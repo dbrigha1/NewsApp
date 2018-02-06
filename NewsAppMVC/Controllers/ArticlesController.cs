@@ -60,8 +60,9 @@ namespace NewsAppMVC.Controllers
                 {
                     ID = articleVM.ID,
                     Name = articleVM.Name,
-                    DateCreated = articleVM.DateCreated,
-                    DateUpdated = articleVM.DateUpdated,
+                    //DateCreated = articleVM.DateCreated,
+                    DateCreated = DateTime.Today,
+                    DateUpdated = DateTime.Today,
                    
                     Topics = db.Topics.Where(c => articleVM.SelectedTopicIds.Contains(c.ID)).ToList(),
                     Author = db.Authors.Where(c => articleVM.SelectedAuthorId.Equals(c.ID)).SingleOrDefault()
@@ -119,8 +120,8 @@ namespace NewsAppMVC.Controllers
                 existingArticle.ID = articleVM.ID;
                 existingArticle.Name = articleVM.Name;
                 
-                existingArticle.DateCreated = articleVM.DateCreated;
-                existingArticle.DateUpdated = articleVM.DateUpdated;
+                //existingArticle.DateCreated = articleVM.DateCreated;
+                existingArticle.DateUpdated = DateTime.Today;
                 //existingArticle.Topics = db.Topics.Where(c => articleVM.SelectedTopicIds.Contains(c.ID)).ToList();
                 existingArticle.Author = db.Authors.Where(c => articleVM.SelectedAuthorId.Equals(c.ID)).SingleOrDefault();
 

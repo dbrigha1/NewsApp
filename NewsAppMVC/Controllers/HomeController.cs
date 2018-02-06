@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace NewsAppMVC.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         private NewsAppMVCContext db = new NewsAppMVCContext();

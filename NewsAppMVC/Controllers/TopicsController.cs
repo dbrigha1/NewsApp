@@ -49,7 +49,7 @@ namespace NewsAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,SelectedArticleIds,DateCreated")] NewsAppMVC.ViewModels.TopicViewModel topicVM)
+        public ActionResult Create([Bind(Include = "ID,Name,SelectedArticleIds")] NewsAppMVC.ViewModels.TopicViewModel topicVM)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace NewsAppMVC.Controllers
                 {
                     ID = topicVM.ID,
                     Name = topicVM.Name,
-                    DateCreated = topicVM.DateCreated,
+                    //DateCreated = topicVM.DateCreated,
                     Articles = db.Articles.Where(c => topicVM.SelectedArticleIds.Contains(c.ID)).ToList()
                 };
 
@@ -89,7 +89,7 @@ namespace NewsAppMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,DateCreated")] Topic topic)
+        public ActionResult Edit([Bind(Include = "ID,Name")] Topic topic)
         {
             if (ModelState.IsValid)
             {
